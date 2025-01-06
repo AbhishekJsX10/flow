@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Humane&family=Prosto+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    font-family: 'Prosto One', sans-serif;
+    background: #000;
+    overflow-x: hidden;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+}
+
+section.sticky{
+   position: fixed;
+   top:0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background: #5546ff;
+   overflow-y: hidden;
+}
+
+nav{
+    position: absolute;
+    top:0;
+    width: 100%;
+    padding: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a{
+    text-decoration: none;
+    text-decoration: uppercase;
+    font-family: 'Prosto One', sans-serif;
+    font-size: 60px;
+    color: #bfff00;
+}
+
+.links a{
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.5em 1em;
+    font-size: 13px;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 20px;
+}
+
+.header{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    text-align: center;
+}
+
+.header h1{
+    text-transform: uppercase;
+    font-family: 'Prosto One', sans-serif;
+    font-size: 25vw;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    padding: 0;
+}
+
+section.website-content{
+    position:absolute;
+    top:100vh;
+    width: 100vw;
+    height: auto;
+    background: #252525;
+    padding: 2em 2em;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+}
+
+.tracker{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 75%;
+    height: 75%;
+    padding: 4em 0;
+}
+
+.emoji{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 350px;
+    height: 350px;
+    background: url("https://cdn.prod.website-files.com/63bf3e1c32ea7ba16d1bdf88/63bf3e1c32ea7b07501bdfa3_flowvatar_lights.webp") no-repeat 50% 50%;
+    background-size: cover;
+    border-radius: 100%;
+}
+
+.emoji-face{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 225px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.eyes, .mouth-wrapper{
+    flex: 1;
+}
+
+.eyes{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: red; */
+}
+
+.eyes img{
+    width: 70px;
+    height: 70px;
+    animation: rotateEyes 4s infinite linear;
+}
+
+.mouth-wrapper{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    /* position: relative; */
+}
+
+.mouth{
+    margin-top: 100px;
+    width: 40px;
+    height: 20px;
+    border-radius: 50px;
+    background: #fff;
+    background: #000;
+    animation: wonderFace 2s infinite cubic-bezier(0.075, 0.82, 0.165, 1);
+    /* position: absolute;
+    bottom: 1em; */
+}
+
+.section-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.section-header h1{
+    font-family: 'Prosto One', sans-serif;
+    font-size: 4vw;
+    font-weight: 400;
+    color: #fff;
+    line-height: 100%;
+    text-transform: uppercase;
+}
+
+.section-header p{
+    color: #fff;
+    font-size: 13px;
+    text-transform: uppercase;
+    text-align: right;
+    width: 25%;
+}
+
+.row{
+    display: flex;
+    gap:1em;
+    margin: 1em 0 0 0;
+}
+
+.row img{
+    height: 300px;
+    border-radius: 10px;
+    min-height: 450px;
+}
+
+@keyframes rotateEyes{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wonderFace{
+    0%{
+        height: 40px;
+    }
+    50%{
+        height: 80px;
+    }
+    100%{
+        height: 40px;
+    }
+}
