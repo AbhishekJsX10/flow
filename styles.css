@@ -90,6 +90,7 @@ nav{
     padding: 0;
 }
 
+
 section.website-content{
     position:absolute;
     top:100vh;
@@ -118,9 +119,10 @@ section.website-content{
     transform: translate(-50%,-50%);
     width: 350px;
     height: 350px;
-    background: url("https://cdn.prod.website-files.com/63bf3e1c32ea7ba16d1bdf88/63bf3e1c32ea7b07501bdfa3_flowvatar_lights.webp") no-repeat 50% 50%;
-    background-size: cover;
+    background: #5044f4;
     border-radius: 100%;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
 }
 
 .emoji-face{

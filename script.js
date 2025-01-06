@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded",()=>{
     gsap.registerPlugin(ScrollTrigger);
     gsap.to(".sticky",{
@@ -35,66 +33,72 @@ document.addEventListener("DOMContentLoaded",()=>{
             ease: "power3.out",
         }
     )   
-})
+});
 
 const wrapper = document.querySelector(".tracker");
 const emoji = document.querySelector(".emoji");
 const emojiFace = document.querySelector(".emoji-face");
 const mouth = document.querySelector(".mouth");
 
+const emojiMaxDisplacement = 50;
+const emojiFaceMaxDisplacement = 75;
+
 const moveEvent = (e) => {
     const wrapperRect = wrapper.getBoundingClientRect();
-
+    const emojiRect = emoji.getBoundingClientRect();
+    
     const relx = e.clientX - (wrapperRect.left + wrapperRect.width / 2);
     const rely = e.clientY - (wrapperRect.top + wrapperRect.height / 2);
+    
+    const emojiCenterX = emojiRect.left + (emojiRect.width / 2);
+    const distanceFromCenter = e.clientX - emojiCenterX;
+    
+    // Change color based on horizontal position relative to emoji
+    if (distanceFromCenter < -100) {
+        emoji.style.backgroundColor = '#ff69b4'; // Pink
+    } else if (distanceFromCenter > 100) {
+        emoji.style.backgroundColor = '#bfff00'; // Neon
+    } else {
+        emoji.style.backgroundColor = '#5546ff'; // Purple
+    }
 
-    const emojiMaxDisplacement = 50;
-    const emojiFaceMaxDisplacement = 75;
+    const emojiDisplacementX = (relx / (wrapperRect.width / 2)) * emojiMaxDisplacement;
+    const emojiDisplacementY = (rely / (wrapperRect.height / 2)) * emojiMaxDisplacement;
 
-    const emojiDisplacementX = (relx / wrapperRect.width) * emojiMaxDisplacement;
-    const emojiDisplacementY = (rely / wrapperRect.height) * emojiMaxDisplacement;
-    // const emojiMouthX = (relx / wrapperRect.width) * 10;
-    // const emojiMouthY = (rely / wrapperRect.height) * 10;
+    const emojiFaceDisplacementX = (relx / (wrapperRect.width / 2)) * emojiFaceMaxDisplacement;
+    const emojiFaceDisplacementY = (rely / (wrapperRect.height / 2)) * emojiFaceMaxDisplacement;
 
-    const emojiFaceDisplacementX = (relx / wrapperRect.width) * emojiFaceMaxDisplacement;
-    const emojiFaceDisplacementY = (rely / wrapperRect.height) * emojiFaceMaxDisplacement;
-    // const mouthDisplacementX = (relx / wrapperRect.width) * emojiMouthX;
-    // const mouthDisplacementY = (rely / wrapperRect.height) * emojiMouthY;
-
-    gsap.to(emoji,{
+    gsap.to(emoji, {
         x: emojiDisplacementX,
         y: emojiDisplacementY,
         ease: "power3.out",
         duration: 0.35,
-    })
+    });
 
-    gsap.to(emojiFace,{
+    gsap.to(emojiFace, {
         x: emojiFaceDisplacementX,
         y: emojiFaceDisplacementY,
         ease: "power3.out",
         duration: 0.35,
-    })
+    });
 
-    gsap.to(mouth,{
+    gsap.to(mouth, {
         x: emojiFaceDisplacementX,
         y: emojiFaceDisplacementY,
         ease: "power3.out",
         duration: 0.35,
-    })
-   
+    });
 }
 
-
-const leaveEvent = () =>{
-    gsap.to([emoji,emojiFace],{
-        x:0,
-        y:0,
+const leaveEvent = () => {
+    gsap.to([emoji, emojiFace, mouth], {
+        x: 0,
+        y: 0,
         ease: "power3.out",
-        duration: 1,
-    })
+        duration: 0.35,
+    });
+    emoji.style.backgroundColor = '#5044f4'; // Reset to default purple
 }
 
-wrapper.addEventListener("mousemove",moveEvent);
-wrapper.addEventListener("mousemove",moveEvent);
-
-
+wrapper.addEventListener("mousemove", moveEvent);
+wrapper.addEventListener("mouseleave", leaveEvent);
